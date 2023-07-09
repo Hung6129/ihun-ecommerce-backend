@@ -21,14 +21,14 @@ class ProductsCategory(models.Model):
         return self.name
 
 
-class Maker(models.Model):
+class Makers(models.Model):
     name = models.CharField(max_length=256)
 
     def __str__(self):
         return self.name
 
 
-class Product(models.Model):
+class Products(models.Model):
     class Currency(models.TextChoices):
         SWEDISH_CROWN = ("SEK", _("Swedish Crown"))
         EURO = ("EUR", _("Euro"))
@@ -39,7 +39,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=512)
     subtitle = models.CharField(max_length=512)
-    maker = models.ForeignKey(Maker, related_name="products", on_delete=models.CASCADE)
+    maker = models.ForeignKey(Makers, related_name="products", on_delete=models.CASCADE)
     image1_url = models.URLField(blank=True, null=True)
     image2_url = models.URLField(blank=True, null=True)
     image3_url = models.URLField(blank=True, null=True)
